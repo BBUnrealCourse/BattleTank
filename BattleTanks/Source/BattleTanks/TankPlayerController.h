@@ -3,13 +3,13 @@
 #pragma once
 
 #include "GameFramework/PlayerController.h"
-#include "Public/Tank.h"
 #include "TankPlayerController.generated.h"	//Must be the last include
-
 
 /**
  * 
  */
+class ATank;
+
 UCLASS()
 class BATTLETANKS_API ATankPlayerController : public APlayerController
 {
