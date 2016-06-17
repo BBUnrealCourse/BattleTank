@@ -48,7 +48,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		MoveBarrelTowards(AimDirection);
 
 		auto Time = GetWorld()->GetTimeSeconds();
-		UE_LOG(LogTemp, Warning, TEXT("%f: Barrel->Elevate() called at speed: %f"), Time);
+		UE_LOG(LogTemp, Warning, TEXT("%f: Barrel->Elevate() called"), Time);
 	}
 	else
 	{
@@ -65,5 +65,5 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	auto AimAsRotator = AimDirection.Rotation();
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
 
-	Barrel->Elevate(5);	// TODO Remove magic number!
+	Barrel->Elevate(DeltaRotator.Pitch);
 }
