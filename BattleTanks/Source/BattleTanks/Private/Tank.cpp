@@ -31,7 +31,6 @@ void ATank::SetTurretReference(UTankTurret* TurretToSet)
 void ATank::Fire()
 {
 	bool isReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
-	UE_LOG(LogTemp, Warning, TEXT("Re-loading..."));
 	if (Barrel && isReloaded) 
 	{ 
 	// Spawn a projectile at the socket location on the barrel
