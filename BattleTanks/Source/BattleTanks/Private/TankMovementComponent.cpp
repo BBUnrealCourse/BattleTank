@@ -37,7 +37,6 @@ void UTankMovementComponent::RequestDirectMove(const FVector & MoveVelocity, boo
 	auto ForwardThrow = FVector::DotProduct(AIForwardIntention, TankForward);
 	auto TurnRightThrow = FVector::CrossProduct(TankForward, AIForwardIntention).Z;
 	
-	UE_LOG(LogTemp, Warning, TEXT("%f cross product"), TurnRightThrow);
 	IntendMoveForward(ForwardThrow);
 	IntendTurnRight(TurnRightThrow);
 }
