@@ -19,18 +19,16 @@ void UTankAimingComponent::Initialise(UTankBarrel* BarrelToSet, UTankTurret* Tur
 {
 	Barrel = BarrelToSet;
 	Turret = TurretToSet;
-	UE_LOG(LogTemp, Warning, TEXT("Barrel set started: %s"), *Barrel->GetName());
-	UE_LOG(LogTemp, Warning, TEXT("Turret set started: %s"), *Turret->GetName());
 }
 
-void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
+void UTankAimingComponent::AimAt(FVector HitLocation)
 {
 	//UE_LOG(LogTemp, Warning, TEXT("AimAt started"));
 	if (!ensure(Barrel)) { return; }
-	UE_LOG(LogTemp, Warning, TEXT("Barrel set started: %s"), *Barrel->GetName());
-	// this = WorldContextObject
+	
 	FVector OutLaunchVelocity;
 	FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
+	
 	// Calculate OutLaunchVelocity
 	bool bHaveAimSolution = UGameplayStatics::SuggestProjectileVelocity
 		(
