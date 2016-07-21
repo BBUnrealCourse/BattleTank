@@ -34,6 +34,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Projectile)
 	void Fire();
 
+	bool IsBarrelMoving();
+
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "State")
 	EFiringState FiringState = EFiringState::Reloading;
@@ -60,4 +62,6 @@ private:
 	float ReloadTimeInSeconds = 3.0f;
 
 	double LastFireTime = 0;
+
+	FVector AimDirection;
 };
