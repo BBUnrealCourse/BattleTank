@@ -13,19 +13,21 @@ UTankAimingComponent::UTankAimingComponent()
 	// off to improve performance if you don't need them.
 	bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true;	// TODO Should this need to tick?
-
-	// ...
 }
 
 void UTankAimingComponent::Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet)
 {
 	Barrel = BarrelToSet;
 	Turret = TurretToSet;
+	UE_LOG(LogTemp, Warning, TEXT("Barrel set started: %s"), *Barrel->GetName());
+	UE_LOG(LogTemp, Warning, TEXT("Turret set started: %s"), *Turret->GetName());
 }
 
 void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 {
+	//UE_LOG(LogTemp, Warning, TEXT("AimAt started"));
 	if (!ensure(Barrel)) { return; }
+	UE_LOG(LogTemp, Warning, TEXT("Barrel set started: %s"), *Barrel->GetName());
 	// this = WorldContextObject
 	FVector OutLaunchVelocity;
 	FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
@@ -53,8 +55,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 {
-	if (ensure(Barrel || Turret)) { return; }
-	
+	if (!ensure(Barrel) || !ensure(Turret)) { return; }
 	// Work out difference between current barrel rotation, and AimDirection
 	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
 	auto AimAsRotator = AimDirection.Rotation();
