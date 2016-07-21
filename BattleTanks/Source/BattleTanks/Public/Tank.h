@@ -10,14 +10,5 @@ class BATTLETANKS_API ATank : public APawn
 {
 	GENERATED_BODY()
 
-public:
-	
-
-private:
-	// Sets default values for this pawn's properties
-	ATank();
-
-	virtual void BeginPlay() override;
-
-	
+	ATank();	
 };
