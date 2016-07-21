@@ -29,5 +29,5 @@ void ATankAIController::Tick(float DeltaTime)
 
 	// TODO fix firing
 	// Fire if ready
-	//AimingComponent->Fire(); // TODO limit firing rate 
+	AimingComponent->Fire(); // TODO limit firing rate 
 }
