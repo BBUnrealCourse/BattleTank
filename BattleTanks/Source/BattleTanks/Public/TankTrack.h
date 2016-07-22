@@ -20,10 +20,15 @@ public:
 	
 	// Max force per track in Newtons
 	UPROPERTY(EditDefaultsOnly, Category = Setup)
-		float TrackMaxDrivingForce = 40000000.0f; // Assuming 40000kg tank * 1G (10m/s) accelleration
+	float TrackMaxDrivingForce = 40000000.0f; // Assuming 40000kg tank * 1G (10m/s) accelleration
 
 private:
 	UTankTrack();
 
+	virtual void BeginPlay() override;
+
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+
+	UFUNCTION(BlueprintCallable, Category = Input)
+	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
 };
