@@ -1,3 +1,7 @@
+*.VC.db
+BattleTanks/BattleTanks.VC.opendb
+.vs/
+
 # Compiled Object files
 *.slo
 *.lo
